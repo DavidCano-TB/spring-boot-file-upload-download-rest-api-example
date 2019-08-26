@@ -20,7 +20,9 @@ String uploadDirString="file";
 
       FileStorageProperties fsp = new FileStorageProperties();
       fsp.setUploadDir("file");
+      //test
       String DirStringToTest = fsp.getUploadDir().toString();
       assertThat(DirStringToTest).isEqualTo(uploadDirString);
+      
    }
 }
