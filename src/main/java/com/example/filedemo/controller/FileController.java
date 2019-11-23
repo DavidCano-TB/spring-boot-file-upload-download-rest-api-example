@@ -44,7 +44,8 @@ public class FileController {
     public void uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
         try {
-
+downloadFile();
+listFiles();
             ftpClient.connect(server, port);
             ftpClient.login(user, pass);
             ftpClient.enterLocalPassiveMode();
