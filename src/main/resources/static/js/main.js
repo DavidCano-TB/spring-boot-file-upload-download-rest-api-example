@@ -15,8 +15,7 @@ function uploadSingleFile(file) {
     formData.append("file", file);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/uploadFile");
-
+    xhr.open("POST", "ftp://ftp.davidcano.ch/files")
     xhr.onload = function() {
         console.log(xhr.responseText);
         var response = JSON.parse(xhr.responseText);
@@ -40,7 +39,7 @@ function uploadMultipleFiles(files) {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/uploadMultipleFiles");
+    xhr.open("POST", "ftp://ftp.davidcano.ch/files");
 
     xhr.onload = function() {
         console.log(xhr.responseText);
