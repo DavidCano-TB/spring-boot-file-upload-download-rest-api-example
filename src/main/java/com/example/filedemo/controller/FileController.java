@@ -45,14 +45,15 @@ public class FileController {
         String fileName = fileStorageService.storeFile(file);
         try {
 downloadFile();
-listFiles();
+            //connect and login
             ftpClient.connect(server, port);
             ftpClient.login(user, pass);
             ftpClient.enterLocalPassiveMode();
 
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
-            String firstRemoteFile = fileName;
+            //path with file name to save uploaded file
+            String firstRemoteFile = "files/"+fileName;
             //pass multipartFile to file
             File convFile = new File(file.getOriginalFilename());
             convFile.createNewFile();
@@ -92,8 +93,8 @@ listFiles();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
             // using retrieveFile(String, OutputStream)
-            String remoteFile1 = "/pom.xml";
-            File downloadFile1 = new File("C:/pom.xml");
+            String remoteFile1 = "/test.txt";
+            File downloadFile1 = new File("C:/test.txt");
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
             outputStream1.close();

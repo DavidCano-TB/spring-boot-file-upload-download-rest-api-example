@@ -16,6 +16,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import static com.example.filedemo.controller.FileController.listFiles;
+
 @Service
 public class FileStorageService {
 
@@ -27,6 +29,7 @@ public class FileStorageService {
                 .toAbsolutePath().normalize();
 
         try {
+            listFiles();
             Files.createDirectories(this.fileStorageLocation);
         } catch (Exception ex) {
             throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
